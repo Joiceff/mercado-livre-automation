@@ -1,0 +1,42 @@
+name: Mobile Appium Tests
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  run-appium-tests:
+    runs-on: ubuntu-latest
+
+    services:
+      appium:
+        image: appium/appium
+        ports:
+          - 4723:4723
+        options: --privileged
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up JDK
+      uses: actions/setup-java@v3
+      with:
+        distribution: 'temurin'
+        java-version: '11'
+
+    - name: Set up Android SDK
+      uses: reactivecircus/android-emulator-runner@v2
+      with:
+        api-level: 30
+        target: google_apis
+        arch: x86_64
+        force-avd-creation: true
+        emulator-options: -no-window -no-audio
+        disable-animations: true
+        script: echo "Emulador iniciado"
+
+    - name: Build and run tests
+      run: mvn test
