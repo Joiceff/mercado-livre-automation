@@ -72,7 +72,8 @@ Este projeto conta com integração via **GitHub Actions**. A cada `push` ou `pu
 ## 📱 APK
 
 O arquivo do app `mercadolivre.apk` deve ser adicionado manualmente na pasta `app/`.
+Site para download https://mercadolibre.br.uptodown.com/android
 
 ## 📧 Contato
 
-Desenvolvido como parte de um teste técnico para a posição de **Automatizador de Testes Sênior**.
+Joice Fernanda Ferreira - 
